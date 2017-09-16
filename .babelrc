@@ -1,4 +1,4 @@
 {
-  "presets": "babel-preset-env",
+  "presets": ["react", "babel-preset-env"],
   "plugins": ["syntax-async-functions"]
 }

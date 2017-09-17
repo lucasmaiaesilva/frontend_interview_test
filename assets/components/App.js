@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import If from './If'
 import axios from 'axios'
 
 class App extends Component {
@@ -17,7 +18,11 @@ class App extends Component {
   }
   render() {
     console.log(this.state.data)
-    return <h1>Olá mundo!</h1>
+    return (
+    <h1>
+      Olá mundo!
+    </h1>
+    )
   }
 }
 

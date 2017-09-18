@@ -6,7 +6,8 @@ class App extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      data: []
+      data: [],
+      isFetching: true
     }
   }
   componentDidMount() {
@@ -14,7 +15,7 @@ class App extends Component {
       method:'get',
       url:'https://api.mcmakler.de/v1/advertisements'
     })
-    .then(res => console.log(this.mountData(res.data.data)))
+    .then(res => this.setState({ data: this.mountData(res.data.data), isFetching: false }))
   }
   mountData(obj) {
     return obj.splice(0, 10).map(house => this.customizeAdv(house))
@@ -27,16 +28,21 @@ class App extends Component {
       address: item.realestateSummary.address,
       rooms: item.realestateSummary.numberOfRooms,
       space: item.realestateSummary.space,
-      url: item.advertisementAssets[0].advertisementThumbnails.inventory_m.url      
+      url: item.advertisementAssets[0].advertisementThumbnails.inventory_m.url
     }
     return obj
   }
   render() {
     console.log(this.state.data)
     return (
-    <h1>
-      Olá mundo!
-    </h1>
+      <div style={{display: 'flex', alignItems: 'center', justifyContent: 'center', height: '100vh'}}>
+        <If test={this.state.isFetching}>
+          <h1>Loading ...</h1>
+        </If>
+        <If test={!this.state.isFetching}>
+          <h1>cards</h1>
+        </If>
+      </div>
     )
   }
 }

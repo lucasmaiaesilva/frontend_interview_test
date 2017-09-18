@@ -1,10 +1,10 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import './index.css'
 
 const Card = ({ address, id, price, rooms, space, title, url }) => {
-  console.log(price)
   return (
-    <div className="card">
+    <div key={item.id} className="card">
       <div className="card-header">
         <span className="btn-adv">
           mieten
@@ -29,6 +29,16 @@ const Card = ({ address, id, price, rooms, space, title, url }) => {
       </div>
     </div>
   )
+}
+
+Card.propTypes = {
+  address: PropTypes.object.isRequired,
+  id: PropTypes.object.isRequired,
+  price: PropTypes.object.isRequired,
+  rooms: PropTypes.number.isRequired,
+  space: PropTypes.number.isRequired,
+  title: PropTypes.string.isRequired,
+  url: PropTypes.string.isRequired,
 }
 
 export default Card

@@ -1,31 +1,34 @@
 import React from 'react'
 import './index.css'
 
-const Card = props => (
-  <div className="card">
-    <div className="card-header">
-      <span className="btn-adv">
-        mieten
-      </span>
-      <img className="thumb" src="https://d3e02gns9oqhhr.cloudfront.net/assets/expose_v2/57337de18ffd7cbd368b46d2_variant_asset57d179e502122_inventoryM.jpg" />
-    </div>
-    <div className="card-body">
-      <h1>
-        2-Zimmer Wohnung in Top-Lage Berlin-Mitte / Büro möglich
-      </h1>
-      <div className="info">
-        09130 - city - street
+const Card = ({ address, id, price, rooms, space, title, url }) => {
+  console.log(price)
+  return (
+    <div className="card">
+      <div className="card-header">
+        <span className="btn-adv">
+          mieten
+        </span>
+        <img className="thumb" src={url} />
+      </div>
+      <div className="card-body">
+        <h1>
+          {title}
+        </h1>
+        <div className="info">
+          {address.postalCode} - {address.city} - {address.street}
+        </div>
+      </div>
+      <div className="card-footer">
+        <span className="price">
+          {price.sellPrice} €
+        </span>
+        <span className="info">
+          {rooms} Zimmer | ab {space} m2
+        </span>
       </div>
     </div>
-    <div className="card-footer">
-      <span className="price">
-        1.954 e
-      </span>
-      <span className="info">
-        3 Zimmer | ab 35m
-      </span>
-    </div>
-  </div>
-)
+  )
+}
 
 export default Card

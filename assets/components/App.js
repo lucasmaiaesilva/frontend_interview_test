@@ -37,15 +37,14 @@ class App extends Component {
     return obj
   }
   render() {
-    console.log(this.state.data)
     return (
       <div>
-        {/* <If test={this.state.isFetching}>
+        <If test={this.state.isFetching}>
           <Loading />
-        </If> */}
-        <If test={true}>
+        </If>
+        <If test={!this.state.isFetching}>
           <div className="container">
-            <Card data={this.state.data[0]} />
+            {this.state.data.map(item => <Card {...item}/>)}
           </div>
         </If>
       </div>

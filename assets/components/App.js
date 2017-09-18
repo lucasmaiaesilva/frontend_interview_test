@@ -1,6 +1,10 @@
 import React, { Component } from 'react'
 import If from './If'
+import Loading from './Loading'
+import Card from './Card'
 import axios from 'axios'
+
+import './base.css'
 
 class App extends Component {
   constructor(props) {
@@ -35,12 +39,14 @@ class App extends Component {
   render() {
     console.log(this.state.data)
     return (
-      <div style={{display: 'flex', alignItems: 'center', justifyContent: 'center', height: '100vh'}}>
-        <If test={this.state.isFetching}>
-          <h1>Loading ...</h1>
-        </If>
-        <If test={!this.state.isFetching}>
-          <h1>cards</h1>
+      <div>
+        {/* <If test={this.state.isFetching}>
+          <Loading />
+        </If> */}
+        <If test={true}>
+          <div className="container">
+            <Card data={this.state.data[0]} />
+          </div>
         </If>
       </div>
     )

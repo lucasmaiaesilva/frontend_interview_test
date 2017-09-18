@@ -44,7 +44,10 @@ class App extends Component {
         </If>
         <If test={!this.state.isFetching}>
           <div className="container">
-            {this.state.data.map(item => <Card {...item}/>)}
+            {this.state.data.map((item, index) => {
+              const _id = item.id + index
+              return <Card key={_id} {...item}/>
+            })}
           </div>
         </If>
       </div>

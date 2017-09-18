@@ -4,7 +4,7 @@ import './index.css'
 
 const Card = ({ address, id, price, rooms, space, title, url }) => {
   return (
-    <div key={item.id} className="card">
+    <div className="card">
       <div className="card-header">
         <span className="btn-adv">
           mieten
